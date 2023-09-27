@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import ShoppingCart from "../components/ShoppingCart";
+import ShoppingCart from "../components/Shopping-Cart/ShoppingCart";
 
 const ShoppingCartContext = createContext({});
 

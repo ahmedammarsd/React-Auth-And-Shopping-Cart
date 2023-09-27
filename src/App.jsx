@@ -1,23 +1,28 @@
 import { useState } from 'react';
-import { Container } from "react-bootstrap";
 import {Routes , Route } from "react-router-dom"
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import Store from './components/Store';
-import About from './components/About';
+import Home from './components/Shopping-Cart/Home';
+import Store from './components/Shopping-Cart/Store';
+import About from './components/Shopping-Cart/About';
+import MainCart from './components/Shopping-Cart/Main';
+import SelectProject from './components/SelectProject';
+import  MainAuth from './components/React-Authentication/Main';
 
 function App() {
 
   return (
     <>
-    <Navbar />
-  <Container className="mb-4">
+    <SelectProject />
     <Routes>
-      <Route path="/" element={<Home />}/>
-      <Route path="/store/" element={<Store />} />
-      <Route path="/about" element={<About />} />
+      <Route path='/' element={<SelectProject />} />
+      <Route path="/shopping-cart" element={<MainCart />}>
+        <Route path="" element={<Home />}/>
+        <Route path="store" element={<Store />} />
+        <Route path="about" element={<About />} />
+      </Route>
+      <Route path='/react-auth'>
+        <Route path="" element={<MainAuth />} />
+      </Route>
     </Routes>
-  </Container>
   </>
   )
 }

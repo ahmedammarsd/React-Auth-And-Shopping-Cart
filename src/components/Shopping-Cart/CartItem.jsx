@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Stack } from "react-bootstrap";
-import storeItems from "../data/storeItems.json";
+import storeItems from "../../data/storeItems.json";
 import formatCurrency from "./FormatCurrency";
-import { useShoppingCart } from "../context/ShoppingCartContext";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 const CartItem = ({ id, quantity }) => {
   const { removeItemFromCart } = useShoppingCart();

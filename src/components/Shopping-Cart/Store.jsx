@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row , Col } from "react-bootstrap";
-import storeItems from "../data/storeItems.json";
+import storeItems from "../../data/storeItems.json";
 import StoreItem from './StoreItem';
-import { useShoppingCart } from '../context/ShoppingCartContext';
+import { useShoppingCart } from '../../context/ShoppingCartContext';
 
 const Store = () => {
     const { cartItems } = useShoppingCart()

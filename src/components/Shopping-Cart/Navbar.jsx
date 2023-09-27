@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom"
 import { Navbar as NavbarBs , Container , Nav , Button } from "react-bootstrap"
-import { useShoppingCart } from '../context/ShoppingCartContext';
+import { useShoppingCart } from '../../context/ShoppingCartContext';
 
 const Navbar = () => {
     const {cartQuantity , openCart } = useShoppingCart()
@@ -10,9 +10,9 @@ const Navbar = () => {
         <Container>
             <Nav className="me-auto">
                 {/* as make you to use nav.link from bootstrap like navlink from react router dom via {as={NavLink}} */}
-                <Nav.Link to="/" as={NavLink}>Home</Nav.Link>
-                <Nav.Link to="/store" as={NavLink}>Store</Nav.Link>
-                <Nav.Link to="/about" as={NavLink}>About</Nav.Link>
+                <Nav.Link to="" as={NavLink}>Home</Nav.Link>
+                <Nav.Link to="store" as={NavLink}>Store</Nav.Link>
+                <Nav.Link to="about" as={NavLink}>About</Nav.Link>
             </Nav>
             <Button variant="outline-primary" className="rounded-circle"
              style={{

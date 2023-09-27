@@ -1,9 +1,9 @@
 import React from 'react'
 import { Offcanvas, Stack } from 'react-bootstrap'
-import { useShoppingCart } from '../context/ShoppingCartContext';
+import { useShoppingCart } from '../../context/ShoppingCartContext';
 import CartItem from './CartItem';
 import formatCurrency from './FormatCurrency';
-import storeItems from "../data/storeItems.json"
+import storeItems from "../../data/storeItems.json"
 
 const ShoppingCart = ({isOpen}) => {
     const {cartItems , closeCart} = useShoppingCart();
