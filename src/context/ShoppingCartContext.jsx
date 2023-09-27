@@ -1,13 +1,28 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import ShoppingCart from "../components/ShoppingCart";
 
 const ShoppingCartContext = createContext({});
 
-const ShoppingCartProvider = ({children}) => {
-    const [cartItems , setCartItems] = useState([]);
+const initialCartItems = localStorage.getItem("shopping-cart") ? JSON.parse(localStorage.getItem("shopping-cart")) : []
 
+const ShoppingCartProvider = ({children}) => {
+    const [isOpen , setIsOpen] = useState(false)
+    const [cartItems , setCartItems] = useState(initialCartItems);
+
+    useEffect(() => {
+      localStorage.setItem("shopping-cart" , JSON.stringify(cartItems))
+    },[cartItems])
+    const openCart = () => {
+      setIsOpen(true)
+    }
+    const closeCart = () => {
+      setIsOpen(false)
+    }
+     // GET SUMITION THE ITEMS IN CART (CONTAIN TH DUBLE OF ITEM)
+    const cartQuantity = cartItems.reduce((quantity , item) => item.quantity + quantity , 0)
+
+    // GET ITEM IN CART IF === IN CART ===
     const getItemsQuantity = (id) => {
-      console.log(id)
         return cartItems.find((item) => item.id === id)?.quantity || 0
     } 
 
@@ -16,8 +31,10 @@ const ShoppingCartProvider = ({children}) => {
       setCartItems((currntItems) => {
         // === CHECK THE ITEM IN THE CART OR NOT ===
 
+        //console.log(currntItems.find((item) => item.id === id)) IN FIRST TIME ITS NOT WORK AFTER CHECK THE VALUE AND CONDTION ITS WORK == NULL
+
         // CASE ONE === ITEM NOT IN CART == IF ITEM NOT IN CART == ADD ITEM TO CART
-        if(currntItems.find((item) => item.id === id) === null){
+        if(currntItems.find((item) => item.id === id) == null){
           return [...currntItems , {id , quantity : 1}]
           //return cartItems.push( {id , quantity : 1})
         } 
@@ -75,11 +92,15 @@ const ShoppingCartProvider = ({children}) => {
     getItemsQuantity ,
     increaseCartQuantity , 
     decreaseCartQuantity , 
-    removeItemFromCart
+    removeItemFromCart,
+    isOpen,
+    openCart,
+    closeCart,
+    cartQuantity
   }}
   >
     {children}
-    <ShoppingCart />
+    <ShoppingCart isOpen={isOpen}/>
   </ShoppingCartContext.Provider>
   )
 }

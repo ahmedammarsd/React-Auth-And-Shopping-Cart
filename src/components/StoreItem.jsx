@@ -22,7 +22,7 @@ const StoreItem = ({ id, price, name, imgUrl }) => {
           cursor: "pointer",
         }}
       />
-      <Card.Body>
+      <Card.Body> 
         <Card.Title className="d-flex justify-content-between align-items-baseline">
           <span className="fs-2">{name}</span>
           <span className="text-muted me-2">{formatCurrency(price)}</span>
